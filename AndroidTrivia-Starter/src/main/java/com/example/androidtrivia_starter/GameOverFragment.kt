@@ -17,6 +17,7 @@
 package com.example.androidtrivia_starter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,18 @@ import com.example.androidtrivia_starter.databinding.FragmentGameOverBinding
 
 class GameOverFragment : Fragment() {
     private lateinit var binding : FragmentGameOverBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val mainActivity = activity as MainActivity
+        mainActivity.hideBottomNavigation(true)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val mainActivity = activity as MainActivity
+        mainActivity.hideBottomNavigation(false)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

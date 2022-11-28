@@ -28,6 +28,18 @@ import com.example.androidtrivia_starter.databinding.FragmentGameWonBinding
 class GameWonFragment : Fragment() {
     private lateinit var binding : FragmentGameWonBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val mainActivity = activity as MainActivity
+        mainActivity.hideBottomNavigation(true)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val mainActivity = activity as MainActivity
+        mainActivity.hideBottomNavigation(false)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
