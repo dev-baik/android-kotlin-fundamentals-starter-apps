@@ -14,7 +14,9 @@ limitations under the License. -->
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="myName"
+            type="com.example.aboutmedatabinding_starter.MyName" />
     </data>
 
     <LinearLayout
@@ -29,7 +31,7 @@ limitations under the License. -->
             style="@style/NameStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/name"
+            android:text="@={myName.name}"
             android:textAlignment="center" />
 
         <TextView
@@ -38,6 +40,7 @@ limitations under the License. -->
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:text="@={myName.nickname}"
             android:visibility="gone" />
 
         <EditText
