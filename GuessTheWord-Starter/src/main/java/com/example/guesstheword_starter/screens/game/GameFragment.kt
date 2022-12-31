@@ -57,6 +57,7 @@ class GameFragment : Fragment() {
 
         binding.correctButton.setOnClickListener { onCorrect() }
         binding.skipButton.setOnClickListener { onSkip() }
+        binding.endGameButton.setOnClickListener { onEndGame() }
     }
 
     /** Methods for updating the UI **/
@@ -79,5 +80,16 @@ class GameFragment : Fragment() {
 
     private fun updateScoreText() {
         binding.scoreText.text = viewModel.score.toString()
+    }
+
+    private fun onEndGame() {
+        gameFinished()
+    }
+
+    private fun gameFinished() {
+        Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()
+        val action = GameFragmentDirections.actionGameToScore()
+        action.score = viewModel.score
+        NavHostFragment.findNavController(this).navigate(action)
     }
 }
