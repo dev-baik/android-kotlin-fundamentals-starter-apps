@@ -16,3 +16,4 @@ rootProject.name = "android-kotlin-fundamentals-starter-apps"
 include ':app'
 include ':AndroidTrivia-Starter'
 include ':AboutMeDataBinding-Starter'
+include ':GuessTheWord-Starter'
