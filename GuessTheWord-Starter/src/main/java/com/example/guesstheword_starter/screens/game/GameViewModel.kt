@@ -1,6 +1,7 @@
 package com.example.guesstheword_starter.screens.game
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -8,15 +9,23 @@ class GameViewModel : ViewModel() {
 
     // The current word
 //    var word = ""
-    val word = MutableLiveData<String>()
+//    val word = MutableLiveData<String>()
+    private val _word = MutableLiveData<String>()
+    val word: LiveData<String> = _word
 
     // The current score
 //    var score = 0
-    val score = MutableLiveData<Int>()
+//    val score = MutableLiveData<Int>()
+    private val _score = MutableLiveData<Int>()
+//    val score: LiveData<Int>
+//        get() = _score
+    val score: LiveData<Int> = _score
 
     init {
-        word.value = ""
-        score.value = 0
+//        word.value = ""
+//        score.value = 0
+        _word.value = ""
+        _score.value = 0
         resetList()
         nextWord()
         Log.i("GameViewModel", "GameViewModel created!")
@@ -59,13 +68,15 @@ class GameViewModel : ViewModel() {
 
     fun onSkip() {
 //        score--
-        score.value = score.value?.minus(1)
+//        score.value = score.value?.minus(1)
+        _score.value = score.value?.minus(1)
         nextWord()
     }
 
     fun onCorrect() {
 //        score++
-        score.value = score.value?.plus(1)
+//        score.value = score.value?.plus(1)
+        _score.value = score.value?.plus(1)
         nextWord()
     }
 
@@ -76,7 +87,8 @@ class GameViewModel : ViewModel() {
         if (wordList.isNotEmpty()) {
             //Select and remove a word from the list
 //            word = wordList.removeAt(0)
-            word.value = wordList.removeAt(0)
+//            word.value = wordList.removeAt(0)
+            _word.value = wordList.removeAt(0)
         }
     }
 
