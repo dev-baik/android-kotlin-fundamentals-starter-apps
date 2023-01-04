@@ -41,6 +41,7 @@ class ScoreFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.score_fragment, container, false)
         viewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(requireArguments()).score)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
+        binding.scoreViewModel = viewModel
         return binding.root
     }
 
@@ -59,7 +60,5 @@ class ScoreFragment : Fragment() {
                 viewModel.onPlayAgainComplete()
             }
         })
-
-        binding.playAgainButton.setOnClickListener { viewModel.onPlayAgain() }
     }
 }
