@@ -43,6 +43,11 @@ class GameViewModel : ViewModel() {
     private val _eventGameFinish = MutableLiveData<Boolean>()
     val eventGameFinish: LiveData<Boolean> = _eventGameFinish
 
+    val wordHint = Transformations.map(word) { word ->
+        val randomPosition = (1..word.length).random()
+        "Current word has " + word.length + " letters" + "\nThe letter at position " + randomPosition + " is " +
+                word[randomPosition - 1].toUpperCase()
+    }
 
     init {
         _word.value = ""
